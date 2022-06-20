@@ -25,7 +25,11 @@ final class GildedRose
                     return;
                 }
 
-                $this->normalTick($item);
+                $item->quality -= 1;
+                if ($item->sellIn <= 0) {
+                    $item->quality -= 1;
+                }
+
                 return;
             }
 
@@ -74,16 +78,6 @@ final class GildedRose
                     }
                 }
             }
-        }
-    }
-
-    private function normalTick(Item $item): void
-    {
-        if ($item->sellIn > 0) {
-            $item->quality -= 1;
-        }
-        if ($item->sellIn <= 0) {
-            $item->quality -= 2;
         }
     }
 }
