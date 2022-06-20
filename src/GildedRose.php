@@ -92,6 +92,10 @@ final class GildedRose
     private function agedBrieTick(Item $item): void
     {
         $item->sellIn -= 1;
+        if ($item->quality === 50) {
+            return;
+        }
+
         $item->quality += 1;
     }
 }
