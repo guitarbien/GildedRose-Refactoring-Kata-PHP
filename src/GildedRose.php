@@ -19,18 +19,10 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name === 'normal') {
-                $item->sellIn  -= 1;
-                if ($item->quality === 0) {
+            switch ($item->name) {
+                case 'normal':
+                    $this->normalTick($item);
                     return;
-                }
-
-                $item->quality -= 1;
-                if ($item->sellIn <= 0) {
-                    $item->quality -= 1;
-                }
-
-                return;
             }
 
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -78,6 +70,19 @@ final class GildedRose
                     }
                 }
             }
+        }
+    }
+
+    private function normalTick(Item $item): void
+    {
+        $item->sellIn -= 1;
+        if ($item->quality === 0) {
+            return;
+        }
+
+        $item->quality -= 1;
+        if ($item->sellIn <= 0) {
+            $item->quality -= 1;
         }
     }
 }
