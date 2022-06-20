@@ -26,6 +26,9 @@ final class GildedRose
                 case 'Aged Brie':
                     $this->agedBrieTick($item);
                     return;
+                case 'Sulfuras, Hand of Ragnaros':
+                    $this->sulfurasTick($item);
+                    return;
             }
 
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -100,5 +103,9 @@ final class GildedRose
         if ($item->sellIn <= 0 && $item->quality < 50) {
             $item->quality += 1;
         }
+    }
+
+    private function sulfurasTick(Item $item): void
+    {
     }
 }
