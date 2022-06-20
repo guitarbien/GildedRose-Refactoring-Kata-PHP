@@ -29,6 +29,9 @@ final class GildedRose
                 case 'Sulfuras, Hand of Ragnaros':
                     $this->sulfurasTick($item);
                     return;
+                case 'Backstage passes to a TAFKAL80ETC concert':
+                    $this->backstageTick($item);
+                    return;
             }
 
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -107,5 +110,29 @@ final class GildedRose
 
     private function sulfurasTick(Item $item): void
     {
+    }
+
+    private function backstageTick(Item $item): void
+    {
+        $item->sellIn -= 1;
+        if ($item->sellIn >= 50) {
+            return;
+        }
+
+        if ($item->sellIn < 0) {
+            $item->quality = 0;
+            return;
+        }
+
+        if ($item->quality < 50) {
+            $item->quality += 1;
+
+            if ($item->sellIn < 10) {
+                $item->quality += 1;
+            }
+            if ($item->sellIn < 5) {
+                $item->quality += 1;
+            }
+        }
     }
 }
