@@ -74,5 +74,7 @@ final class GildedRose
 
     private function normalTick(Item $item): void
     {
+        $item->quality -= 1;
+        $item->sellIn  -= 1;
     }
 }
