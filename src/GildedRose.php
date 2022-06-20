@@ -23,6 +23,9 @@ final class GildedRose
                 case 'normal':
                     $this->normalTick($item);
                     return;
+                case 'Aged Brie':
+                    $this->agedBrieTick($item);
+                    return;
             }
 
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -84,5 +87,9 @@ final class GildedRose
         if ($item->sellIn <= 0) {
             $item->quality -= 1;
         }
+    }
+
+    private function agedBrieTick(Item $item): void
+    {
     }
 }
