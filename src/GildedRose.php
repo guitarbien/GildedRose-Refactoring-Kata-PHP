@@ -20,6 +20,8 @@ final class GildedRose
     {
         foreach ($this->items as $item) {
             if ($item->name === 'normal') {
+                $item->sellIn  -= 1;
+
                 $this->normalTick($item);
                 return;
             }
@@ -82,7 +84,5 @@ final class GildedRose
                 $item->quality -= 2;
             }
         }
-
-        $item->sellIn  -= 1;
     }
 }
