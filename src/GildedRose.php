@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
-use RuntimeException;
-
 final class GildedRose
 {
+    private const SPECIALIZED_CLASSES = [
+        'normal' => Normal::class,
+        'Aged Brie' => AgedBrie::class,
+        'Backstage passes to a TAFKAL80ETC concert' => Backstage::class,
+    ];
+
     public function __construct(private array $items)
     {
     }
@@ -15,13 +19,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            $className = match ($item->name) {
-                'normal' => Normal::class,
-                'Aged Brie' => AgedBrie::class,
-                'Sulfuras, Hand of Ragnaros' => ItemUpdater::class,
-                'Backstage passes to a TAFKAL80ETC concert' => Backstage::class,
-                default => throw new RuntimeException('Unknown item type'),
-            };
+            $className = self::SPECIALIZED_CLASSES[$item->name] ?? ItemUpdater::class;
 
             $newItem = new $className($item);
             $newItem->tick();
