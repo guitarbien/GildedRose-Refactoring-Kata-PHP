@@ -10,6 +10,7 @@ final class GildedRose
         'normal' => Normal::class,
         'Aged Brie' => AgedBrie::class,
         'Backstage passes to a TAFKAL80ETC concert' => Backstage::class,
+        'Conjured Mana Cake' => Conjurd::class,
     ];
 
     public function __construct(private array $items)
