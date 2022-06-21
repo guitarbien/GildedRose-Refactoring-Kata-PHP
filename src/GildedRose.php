@@ -21,7 +21,8 @@ final class GildedRose
         foreach ($this->items as $item) {
             switch ($item->name) {
                 case 'normal':
-                    $this->normalTick($item);
+                    $normalItem = new Normal($item);
+                    $normalItem->tick();
                     return;
                 case 'Aged Brie':
                     $this->agedBrieTick($item);
@@ -33,19 +34,6 @@ final class GildedRose
                     $this->backstageTick($item);
                     return;
             }
-        }
-    }
-
-    private function normalTick(Item $item): void
-    {
-        $item->sellIn -= 1;
-        if ($item->quality === 0) {
-            return;
-        }
-
-        $item->quality -= 1;
-        if ($item->sellIn <= 0) {
-            $item->quality -= 1;
         }
     }
 
