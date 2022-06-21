@@ -18,7 +18,7 @@ final class GildedRose
             $className = match ($item->name) {
                 'normal' => Normal::class,
                 'Aged Brie' => AgedBrie::class,
-                'Sulfuras, Hand of Ragnaros' => Sulfuras::class,
+                'Sulfuras, Hand of Ragnaros' => ItemUpdater::class,
                 'Backstage passes to a TAFKAL80ETC concert' => Backstage::class,
                 default => throw new RuntimeException('Unknown item type'),
             };
