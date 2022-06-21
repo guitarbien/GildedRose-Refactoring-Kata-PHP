@@ -33,32 +33,9 @@ final class GildedRose
                     $sulfurasItem->tick();
                     return;
                 case 'Backstage passes to a TAFKAL80ETC concert':
-                    $this->backstageTick($item);
+                    $backstageItem = new Backstage($item);
+                    $backstageItem->tick();
                     return;
-            }
-        }
-    }
-
-    private function backstageTick(Item $item): void
-    {
-        $item->sellIn -= 1;
-        if ($item->sellIn >= 50) {
-            return;
-        }
-
-        if ($item->sellIn < 0) {
-            $item->quality = 0;
-            return;
-        }
-
-        if ($item->quality < 50) {
-            $item->quality += 1;
-
-            if ($item->sellIn < 10) {
-                $item->quality += 1;
-            }
-            if ($item->sellIn < 5) {
-                $item->quality += 1;
             }
         }
     }
