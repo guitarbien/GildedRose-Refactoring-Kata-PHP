@@ -25,7 +25,8 @@ final class GildedRose
                     $normalItem->tick();
                     return;
                 case 'Aged Brie':
-                    $this->agedBrieTick($item);
+                    $agedBrieItem = new AgedBrie($item);
+                    $agedBrieItem->tick();
                     return;
                 case 'Sulfuras, Hand of Ragnaros':
                     $this->sulfurasTick($item);
@@ -34,19 +35,6 @@ final class GildedRose
                     $this->backstageTick($item);
                     return;
             }
-        }
-    }
-
-    private function agedBrieTick(Item $item): void
-    {
-        $item->sellIn -= 1;
-        if ($item->quality >= 50) {
-            return;
-        }
-
-        $item->quality += 1;
-        if ($item->sellIn <= 0 && $item->quality < 50) {
-            $item->quality += 1;
         }
     }
 
