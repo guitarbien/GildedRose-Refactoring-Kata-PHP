@@ -2,13 +2,6 @@
 
 namespace GildedRose;
 
-class Sulfuras
+class Sulfuras extends ItemUpdater
 {
-    public function __construct(Item $item)
-    {
-    }
-
-    public function tick(): void
-    {
-    }
 }

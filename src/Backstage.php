@@ -2,12 +2,8 @@
 
 namespace GildedRose;
 
-class Backstage
+class Backstage extends ItemUpdater
 {
-    public function __construct(private Item $item)
-    {
-    }
-
     public function tick(): void
     {
         $this->item->sellIn -= 1;

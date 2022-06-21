@@ -2,12 +2,8 @@
 
 namespace GildedRose;
 
-class AgedBrie
+class AgedBrie extends ItemUpdater
 {
-    public function __construct(private Item $item)
-    {
-    }
-
     public function tick(): void
     {
         $this->item->sellIn -= 1;
