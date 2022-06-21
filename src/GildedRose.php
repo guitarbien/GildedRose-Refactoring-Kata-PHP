@@ -29,17 +29,14 @@ final class GildedRose
                     $agedBrieItem->tick();
                     return;
                 case 'Sulfuras, Hand of Ragnaros':
-                    $this->sulfurasTick($item);
+                    $sulfurasItem = new Sulfuras($item);
+                    $sulfurasItem->tick();
                     return;
                 case 'Backstage passes to a TAFKAL80ETC concert':
                     $this->backstageTick($item);
                     return;
             }
         }
-    }
-
-    private function sulfurasTick(Item $item): void
-    {
     }
 
     private function backstageTick(Item $item): void
